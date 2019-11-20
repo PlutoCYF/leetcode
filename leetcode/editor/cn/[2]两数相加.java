@@ -33,11 +33,14 @@ class Solution {
         Integer carry=0;
         while (l1!=null || l2!=null){
             Integer p1= l1==null?0:l1.val;
-            Integer p2=l2==null?0:l2.val;
+            Integer p2= l2==null?0:l2.val;
             Integer tmp=carry+p1+p2;
-            carry=tmp>0?1:0;
+            carry=tmp>9?1:0;
             pre.next=new ListNode(tmp%10);
             pre=pre.next;
+
+            if(l1!=null) l1=l1.next;
+            if(l2!=null) l2=l2.next;
         }
         if (carry==1){
             pre.next=new ListNode(1);
