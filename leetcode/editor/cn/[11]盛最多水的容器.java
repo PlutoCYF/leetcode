@@ -20,6 +20,22 @@
 class Solution {
     public int maxArea(int[] height) {
         int n=height.length;
+        int l=0;
+        int r=n-1;
+        int max=0;
+        while (l<r){
+            max=max(max,(r-l)* min(height[l],height[r]));
+            if(height[l]<height[r]){
+                l++;
+            }
+            else {
+                r--;
+            }
+        }
+        return max;
+    }
+    public int maxAreaSlow(int[] height) {
+        int n=height.length;
         int max=0;
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
@@ -36,6 +52,14 @@ class Solution {
         }
         else {
             return b;
+        }
+    }
+    private  int max(int a,int b){
+        if(a<b){
+            return  b;
+        }
+        else {
+            return a;
         }
     }
 }
